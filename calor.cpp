@@ -7,40 +7,41 @@ using namespace std;
 const float K=1;
 const float C=1;
 const float rho=1;
-const float Dx=1;
-const float Dt=1;
-const float eta=K*Dt/(C*rho*Dx*Dx);
+const int Nx=201;
+const int Nt=401;
 const float L=200;
 const float T=200;
-const int Nx=int(L/Dx +1);
-const int Nt=int(T/Dt +1);
+const float Dx=L/(Nx-1);
+const float Dt=T/(Nt-1);
+const float eta=K*Dt/(C*rho*Dx*Dx);
 
-void solucion();
+
+void solucion(void);
 
 int main(){
     solucion();
     return 0;
 }
 
-void solucion(){
+void solucion(void){
     float T[Nx][Nt]={0};
    
     for(int i=80; i<=120; i++){
         T[i][0]=500;
     }
-    for(int j=0; j<Nt; j++){
+    for(int j=0; j<Nt-1; j++){
         for(int i=1; i<Nx-1; i++){
             T[i][j+1]=T[i][j] + eta*(T[i+1][j] + T[i-1][j]-2*T[i][j]);
         }
     }
-    fstream outfile;
+    ofstream outfile;
     outfile.open("datos.txt");
     for(int j=0; j<Nt;j++){
         for(int i=0;i<Nx;i++){
                 outfile<<T[i][j]<<endl;
         }
     }
-
     outfile.close();
+    
 
 }
