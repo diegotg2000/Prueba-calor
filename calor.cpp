@@ -4,13 +4,13 @@
 
 using namespace std;
 
-const float K=0.1;
-const float C=12;
-const float rho=1;
+const float K=200;
+const float C=900;
+const float rho=2700;
 const int Nx=201;
 const int Nt=201;
 const float L=2;
-const float T=1;
+const float T=100;
 const float Dx=L/(Nx-1);
 const float Dt=T/(Nt-1);
 const float eta=K*Dt/(C*rho*Dx*Dx);
