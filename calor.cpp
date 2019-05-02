@@ -4,13 +4,13 @@
 
 using namespace std;
 
-const float K=1;
-const float C=1;
+const float K=0.1;
+const float C=12;
 const float rho=1;
 const int Nx=201;
 const int Nt=201;
-const float L=200;
-const float T=100;
+const float L=2;
+const float T=1;
 const float Dx=L/(Nx-1);
 const float Dt=T/(Nt-1);
 const float eta=K*Dt/(C*rho*Dx*Dx);
@@ -25,6 +25,11 @@ int main(){
 
 void solucion(void){
     float T[Nx][Nt]={0};
+	for(int j=0; j<Nt; j++){
+        for(int i=0; i<Nx; i++){
+            T[i][j]=300;
+        }
+    }
    
     for(int i=80; i<=120; i++){
         T[i][0]=500;
